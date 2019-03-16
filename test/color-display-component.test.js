@@ -3,12 +3,15 @@ const test = QUnit.test;
 QUnit.module('Create color display');
 
 function createColorDisplay() {
-    return /*html*/`
+    const html = /*html*/`
         <section class="color-display">
             <p>#665162</p>
             <div style="background-color: #665162;"></div>
         </section>
     `;
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content;
 }
 
 test('make color display dom', assert => {
@@ -22,5 +25,5 @@ test('make color display dom', assert => {
     //act
     const result = createColorDisplay();
     //assert
-    assert.equal(result, expected);
+    assert.htmlEqual(result, expected);
 });
