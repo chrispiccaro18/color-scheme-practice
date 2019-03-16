@@ -12,10 +12,12 @@ export function createColorDisplay(color) {
 
 const colorContainer = document.getElementById('color-container');
 
-export default function loadColorDisplay(color) {
+export default function loadColorDisplay(colors) {
     clearColorDisplay();
-    const dom = createColorDisplay(color);
-    colorContainer.appendChild(dom);
+    colors.forEach(color => {
+        const dom = createColorDisplay(color);
+        colorContainer.appendChild(dom);
+    });
 }
 
 function clearColorDisplay() {
