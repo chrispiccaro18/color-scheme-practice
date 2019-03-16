@@ -14,13 +14,10 @@
 
 .color-display p {
     margin: 0;
-    /* align-self: flex-start; */
 }
 
 .color-display div {
     width: 100%;
-    /* border: 1px solid black; */
     align-self: center;
     flex-grow: 1;
-    /* background-color: #665162; */
 }
