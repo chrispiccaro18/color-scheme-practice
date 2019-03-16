@@ -5,5 +5,6 @@ const randomColorForm = document.getElementById('random-color');
 
 randomColorForm.addEventListener('submit', event => {
     event.preventDefault();
-    loadColorDisplay((16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6));
+    const color = (16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6);
+    loadColorDisplay(color);
 });
