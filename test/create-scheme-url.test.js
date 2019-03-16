@@ -1,15 +1,8 @@
+import { createSchemeUrl } from '../src/create-scheme-url.js';
+
 const test = QUnit.test;
 
 QUnit.module('Create url for api');
-
-const BASE_URL = 'http://www.thecolorapi.com/scheme';
-
-function createSchemeUrl(color) {
-    const url = new URL(BASE_URL);
-    url.searchParams.set('hex', color);
-    url.searchParams.set('scheme', 'monochrome');
-    return url.toString();
-}
 
 test('given hex code return url for scheme', assert => {
     //arrange
