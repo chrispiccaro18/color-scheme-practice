@@ -1,16 +1,9 @@
 import scheme from '../data/scheme.js';
+import { createColorArray } from '../src/create-color-array.js';
 
 const test = QUnit.test;
 
 QUnit.module('Create color array');
-
-function createColorArray(scheme) {
-    const colorArray = [];
-    scheme.colors.forEach(color => {
-        colorArray.push(color.hex.clean);
-    });
-    return colorArray;
-}
 
 test('given data return an array of colors as hex values', assert => {
     //arrange
