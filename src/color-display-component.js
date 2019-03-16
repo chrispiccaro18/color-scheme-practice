@@ -9,3 +9,17 @@ export function createColorDisplay(color) {
     template.innerHTML = html;
     return template.content;
 }
+
+const colorContainer = document.getElementById('color-container');
+
+export default function loadColorDisplay(color) {
+    clearColorDisplay();
+    const dom = createColorDisplay(color);
+    colorContainer.appendChild(dom);
+}
+
+function clearColorDisplay() {
+    while(colorContainer.children.length > 0) {
+        colorContainer.lastElementChild.remove();
+    }
+}
