@@ -1,4 +1,4 @@
-const BASE_URL = 'http://www.thecolorapi.com/scheme';
+const BASE_URL = 'https://www.thecolorapi.com/scheme';
 
 export function createSchemeUrl(color) {
     const url = new URL(BASE_URL);
