@@ -4,6 +4,12 @@ import { createColorArray } from './src/create-color-array.js';
 
 // total amount of colors 16777216
 const colorSchemeGenerator = document.getElementById('color-scheme-generator');
+const randomColorSeedButton = document.getElementById('random-color-seed');
+const colorSeed = document.getElementById('color-picker');
+
+randomColorSeedButton.addEventListener('click', () => {
+    colorSeed.value = '#' + (16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6);
+});
 
 colorSchemeGenerator.addEventListener('submit', event => {
     event.preventDefault();
@@ -23,5 +29,3 @@ colorSchemeGenerator.addEventListener('submit', event => {
             loadColorDisplay(colors);
         });
 });
-
-// random color formula (16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6);
