@@ -6,9 +6,32 @@ import { createColorArray } from './src/create-color-array.js';
 const colorSchemeGenerator = document.getElementById('color-scheme-generator');
 const randomColorSeedButton = document.getElementById('random-color-seed');
 const colorSeed = document.getElementById('color-picker');
+const schemeTypeSelect = document.getElementById('scheme-type');
+const schemeColorAmount = document.getElementById('scheme-color-amount');
 
 randomColorSeedButton.addEventListener('click', () => {
     colorSeed.value = '#' + (16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6);
+});
+
+schemeTypeSelect.addEventListener('change', () => {
+    switch(schemeTypeSelect.value) {
+        case 'complement':
+            schemeColorAmount.hidden = true;
+            schemeColorAmount.value = 2;
+            break;
+        case 'triad':
+            schemeColorAmount.hidden = true;
+            schemeColorAmount.value = 3;
+            break;
+        case 'quad':
+            schemeColorAmount.hidden = true;
+            schemeColorAmount.value = 4;
+            break;
+        default:
+            schemeColorAmount.value = 5;
+            schemeColorAmount.hidden = false;
+            break;
+    }
 });
 
 colorSchemeGenerator.addEventListener('submit', event => {
@@ -17,7 +40,8 @@ colorSchemeGenerator.addEventListener('submit', event => {
     const color = colorSchemeGeneratorData.get('color-picker').slice(1);
     const schemeOptions = {
         originalColor: [color],
-        scheme: colorSchemeGeneratorData.get('scheme-type')
+        scheme: colorSchemeGeneratorData.get('scheme-type'),
+        count: Number(colorSchemeGeneratorData.get('scheme-color-amount'))
     };
     const url = createSchemeUrl(schemeOptions);
     loadColorDisplay(schemeOptions.originalColor);
