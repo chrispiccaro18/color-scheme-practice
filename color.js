@@ -7,17 +7,20 @@ const randomColorForm = document.getElementById('random-color');
 
 randomColorForm.addEventListener('submit', event => {
     event.preventDefault();
-
+    const randomColorFormData = new FormData(randomColorForm);
     const color = (16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6);
-    console.log(color);
-    const url = createSchemeUrl(color);
-    const originalColor = [color];
-    loadColorDisplay(originalColor);
-    fetch(url)
-        .then(response => response.json())
-        .then(body => {
-            const colors = createColorArray(body);
-            colors.unshift(color);
-            loadColorDisplay(colors);
-        });
+    const schemeOptions = {
+        originalColor: [color],
+        scheme: randomColorFormData.get('scheme-type')
+    };
+    console.log(schemeOptions);
+    // const url = createSchemeUrl(schemeOptions);
+    loadColorDisplay(schemeOptions.originalColor);
+    // fetch(url)
+    //     .then(response => response.json())
+    //     .then(body => {
+    //         const colors = createColorArray(body);
+    //         colors.unshift(color);
+    //         loadColorDisplay(colors);
+    //     });
 });

@@ -4,12 +4,15 @@ const test = QUnit.test;
 
 QUnit.module('Create url for api');
 
-test('given hex code return url for scheme', assert => {
+test('given hex code and scheme return url for scheme', assert => {
     //arrange
     const expected = 'https://www.thecolorapi.com/scheme?hex=24B1E0&scheme=monochrome';
-    const color = '24B1E0';
+    const schemeOptions = {
+        originalColor: '24B1E0',
+        scheme: 'monochrome'
+    };
     //act
-    const result = createSchemeUrl(color);
+    const result = createSchemeUrl(schemeOptions);
     //assert
     assert.equal(result, expected);
 });

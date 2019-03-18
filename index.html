@@ -13,6 +13,16 @@
     <main>
         <form id="random-color">
             <button>Random color scheme</button>
+            <label for="scheme-type">Choose a scheme:</label>
+            <select name="scheme-type" id="scheme-type" required>
+                <option value="" disabled selected>--Please choose an option--</option>
+                <option value="monochrome">Monochrome</option>
+                <option value="analogic">Analogic</option>
+                <option value="complement">Complement</option>
+                <option value="analogic-complement">Analogic-complement</option>
+                <option value="triad">Triad</option>
+                <option value="quad">Quad</option>
+            </select>
         </form>
         <section id="color-container"></section>
     </main>
