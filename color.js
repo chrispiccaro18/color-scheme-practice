@@ -3,18 +3,17 @@ import { createSchemeUrl } from './src/create-scheme-url.js';
 import { createColorArray } from './src/create-color-array.js';
 
 // total amount of colors 16777216
-const randomColorForm = document.getElementById('random-color');
+const colorSchemeGenerator = document.getElementById('color-scheme-generator');
 
-randomColorForm.addEventListener('submit', event => {
+colorSchemeGenerator.addEventListener('submit', event => {
     event.preventDefault();
-    const randomColorFormData = new FormData(randomColorForm);
-    const color = (16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6);
+    const colorSchemeGeneratorData = new FormData(colorSchemeGenerator);
+    const color = colorSchemeGeneratorData.get('color-picker').slice(1);
     const schemeOptions = {
         originalColor: [color],
-        scheme: randomColorFormData.get('scheme-type')
+        scheme: colorSchemeGeneratorData.get('scheme-type')
     };
     const url = createSchemeUrl(schemeOptions);
-    console.log(url);
     loadColorDisplay(schemeOptions.originalColor);
     fetch(url)
         .then(response => response.json())
@@ -24,3 +23,5 @@ randomColorForm.addEventListener('submit', event => {
             loadColorDisplay(colors);
         });
 });
+
+// random color formula (16777216 + (Math.random()) * 16777215).toString(16).substr(1, 6);

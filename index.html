@@ -11,8 +11,9 @@
         <h1>Colors</h1>
     </header>
     <main>
-        <form id="random-color">
-            <button>Random color scheme</button>
+        <form id="color-scheme-generator">
+            <label for="color-picker">Choose your seed color:</label>
+            <input type="color" name="color-picker" id="color-picker" value="#24B1E0">
             <label for="scheme-type">Choose a scheme:</label>
             <select name="scheme-type" id="scheme-type" required>
                 <option value="" disabled selected>--Please choose an option--</option>
@@ -23,6 +24,7 @@
                 <option value="triad">Triad</option>
                 <option value="quad">Quad</option>
             </select>
+            <button>Give me a scheme!</button>
         </form>
         <section id="color-container"></section>
     </main>
