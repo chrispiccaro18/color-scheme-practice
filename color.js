@@ -13,14 +13,14 @@ randomColorForm.addEventListener('submit', event => {
         originalColor: [color],
         scheme: randomColorFormData.get('scheme-type')
     };
-    console.log(schemeOptions);
-    // const url = createSchemeUrl(schemeOptions);
+    const url = createSchemeUrl(schemeOptions);
+    console.log(url);
     loadColorDisplay(schemeOptions.originalColor);
-    // fetch(url)
-    //     .then(response => response.json())
-    //     .then(body => {
-    //         const colors = createColorArray(body);
-    //         colors.unshift(color);
-    //         loadColorDisplay(colors);
-    //     });
+    fetch(url)
+        .then(response => response.json())
+        .then(body => {
+            const colors = createColorArray(body);
+            colors.unshift(color);
+            loadColorDisplay(colors);
+        });
 });
